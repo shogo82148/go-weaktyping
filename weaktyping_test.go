@@ -13,29 +13,29 @@ func TestUnmarshal(t *testing.T) {
 	}{
 		{struct {
 			Foo Int `json:"foo"`
-		}{Int{123}}, `{"foo":123}`},
+		}{123}, `{"foo":123}`},
 		{struct {
 			Foo Int `json:"foo,omitempty"`
-		}{Int{123}}, `{"foo":123}`},
+		}{123}, `{"foo":123}`},
 		{struct {
 			Foo Int `json:"foo"`
-		}{Int{}}, `{"foo":0}`},
+		}{0}, `{"foo":0}`},
 		{struct {
 			Foo Int `json:"foo,omitempty"`
-		}{Int{}}, `{"foo":0}`},
+		}{0}, `{}`},
 
 		{struct {
 			Foo *Int `json:"foo"`
-		}{&Int{123}}, `{"foo":123}`},
+		}{PtrInt(123)}, `{"foo":123}`},
 		{struct {
 			Foo *Int `json:"foo,omitempty"`
-		}{&Int{123}}, `{"foo":123}`},
+		}{PtrInt(123)}, `{"foo":123}`},
 		{struct {
 			Foo *Int `json:"foo"`
-		}{&Int{}}, `{"foo":0}`},
+		}{PtrInt(0)}, `{"foo":0}`},
 		{struct {
 			Foo *Int `json:"foo,omitempty"`
-		}{&Int{}}, `{"foo":0}`},
+		}{PtrInt(0)}, `{"foo":0}`},
 		{struct {
 			Foo *Int `json:"foo"`
 		}{nil}, `{"foo":null}`},
@@ -61,11 +61,11 @@ func TestMarshal(t *testing.T) {
 		ptr interface{}
 		out interface{}
 	}{
-		{`{"foo":123}`, new(map[string]Int), &map[string]Int{"foo": Int{123}}},
-		{`{"foo":123}`, new(map[string]*Int), &map[string]*Int{"foo": &Int{123}}},
-		{`{"foo":"123"}`, new(map[string]Int), &map[string]Int{"foo": Int{123}}},
-		{`{"foo":"123"}`, new(map[string]*Int), &map[string]*Int{"foo": &Int{123}}},
-		{`{"foo":null}`, new(map[string]Int), &map[string]Int{"foo": Int{0}}},
+		{`{"foo":123}`, new(map[string]Int), &map[string]Int{"foo": 123}},
+		{`{"foo":123}`, new(map[string]*Int), &map[string]*Int{"foo": PtrInt(123)}},
+		{`{"foo":"123"}`, new(map[string]Int), &map[string]Int{"foo": 123}},
+		{`{"foo":"123"}`, new(map[string]*Int), &map[string]*Int{"foo": PtrInt(123)}},
+		{`{"foo":null}`, new(map[string]Int), &map[string]Int{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Int), &map[string]*Int{"foo": nil}},
 	}
 
