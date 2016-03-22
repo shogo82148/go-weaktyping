@@ -18,22 +18,10 @@ func (v *Int) UnmarshalText(data []byte) error {
 		*v = 0
 		return nil
 	}
-	if i, err := strconv.ParseInt(s, 10, 0); err != nil {
+	if w, err := strconv.ParseInt(s, 10, 0); err != nil {
 		return err
 	} else {
-		*v = Int(i)
+		*v = Int(w)
 	}
 	return nil
-}
-
-func unquoteBytesIfQuoted(s []byte) []byte {
-	if len(s) < 2 || s[0] != '"' || s[len(s)-1] != '"' {
-		return s
-	}
-	s = s[1 : len(s)-1]
-
-	// skip decoding escape sequence
-	// we assumed s does not contain espace sequence
-
-	return s
 }
