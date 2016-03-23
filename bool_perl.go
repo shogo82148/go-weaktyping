@@ -15,12 +15,12 @@ func (v *PerlBool) UnmarshalJSON(data []byte) error {
 		*v = false
 	default:
 		f, err := strconv.ParseFloat(s, 64)
-		*v = err != nil || f != 0
+		*v = PerlBool(err != nil || f != 0)
 	}
 	return nil
 }
 
 func (v *PerlBool) UnmarshalText(data []byte) error {
-	*v = len(data) != 0 && (len(data) != 1 || data[0] != '0')
+	*v = PerlBool(len(data) != 0 && (len(data) != 1 || data[0] != '0'))
 	return nil
 }

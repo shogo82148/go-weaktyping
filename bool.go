@@ -15,7 +15,7 @@ func (v *Bool) UnmarshalJSON(data []byte) error {
 		*v = false
 	default:
 		f, err := strconv.ParseFloat(s, 64)
-		*v = err != nil || f != 0
+		*v = Bool(err != nil || f != 0)
 	}
 	return nil
 }

@@ -8,11 +8,11 @@ func PtrRubyBool(v RubyBool) *RubyBool {
 
 func (v *RubyBool) UnmarshalJSON(data []byte) error {
 	s := string(data)
-	*v = s != "false" && s != "null"
+	*v = RubyBool(s != "false" && s != "null")
 	return nil
 }
 
 func (v *RubyBool) UnmarshalText(data []byte) error {
-	*v = true
+	*v = RubyBool(true)
 	return nil
 }

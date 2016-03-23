@@ -15,12 +15,12 @@ func (v *JavaScriptBool) UnmarshalJSON(data []byte) error {
 		*v = false
 	default:
 		f, err := strconv.ParseFloat(s, 64)
-		*v = err != nil || f != 0
+		*v = JavaScriptBool(err != nil || f != 0)
 	}
 	return nil
 }
 
 func (v *JavaScriptBool) UnmarshalText(data []byte) error {
-	*v = len(data) != 0
+	*v = JavaScriptBool(len(data) != 0)
 	return nil
 }
