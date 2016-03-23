@@ -67,6 +67,8 @@ func TestMarshalInt8(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Int8), &map[string]*Int8{"foo": PtrInt8(123)}},
 		{`{"foo":null}`, new(map[string]Int8), &map[string]Int8{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Int8), &map[string]*Int8{"foo": nil}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]Int8), &map[string][]Int8{"foo": {123, 45, 0}}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]*Int8), &map[string][]*Int8{"foo": {PtrInt8(123), PtrInt8(45), nil}}},
 	}
 
 	for _, tc := range testcases {

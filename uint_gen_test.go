@@ -67,6 +67,8 @@ func TestMarshalUint(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Uint), &map[string]*Uint{"foo": PtrUint(123)}},
 		{`{"foo":null}`, new(map[string]Uint), &map[string]Uint{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Uint), &map[string]*Uint{"foo": nil}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]Uint), &map[string][]Uint{"foo": {123, 45, 0}}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]*Uint), &map[string][]*Uint{"foo": {PtrUint(123), PtrUint(45), nil}}},
 	}
 
 	for _, tc := range testcases {

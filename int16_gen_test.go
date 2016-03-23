@@ -67,6 +67,8 @@ func TestMarshalInt16(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Int16), &map[string]*Int16{"foo": PtrInt16(123)}},
 		{`{"foo":null}`, new(map[string]Int16), &map[string]Int16{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Int16), &map[string]*Int16{"foo": nil}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]Int16), &map[string][]Int16{"foo": {123, 45, 0}}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]*Int16), &map[string][]*Int16{"foo": {PtrInt16(123), PtrInt16(45), nil}}},
 	}
 
 	for _, tc := range testcases {

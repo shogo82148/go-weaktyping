@@ -108,6 +108,8 @@ func TestMarshal$NEW_TYPE(t *testing.T) {
 		{\`{"foo":"123"}\`, new(map[string]*$NEW_TYPE), &map[string]*$NEW_TYPE{"foo": Ptr$NEW_TYPE(123)}},
 		{\`{"foo":null}\`, new(map[string]$NEW_TYPE), &map[string]$NEW_TYPE{"foo": 0}},
 		{\`{"foo":null}\`, new(map[string]*$NEW_TYPE), &map[string]*$NEW_TYPE{"foo": nil}},
+		{\`{"foo":[123,"45",null]}\`, new(map[string][]$NEW_TYPE), &map[string][]$NEW_TYPE{"foo": {123, 45, 0}}},
+		{\`{"foo":[123,"45",null]}\`, new(map[string][]*$NEW_TYPE), &map[string][]*$NEW_TYPE{"foo": {Ptr$NEW_TYPE(123), Ptr$NEW_TYPE(45), nil}}},
 	}
 
 	for _, tc := range testcases {

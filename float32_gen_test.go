@@ -67,6 +67,8 @@ func TestMarshalFloat32(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Float32), &map[string]*Float32{"foo": PtrFloat32(123)}},
 		{`{"foo":null}`, new(map[string]Float32), &map[string]Float32{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Float32), &map[string]*Float32{"foo": nil}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]Float32), &map[string][]Float32{"foo": {123, 45, 0}}},
+		{`{"foo":[123,"45",null]}`, new(map[string][]*Float32), &map[string][]*Float32{"foo": {PtrFloat32(123), PtrFloat32(45), nil}}},
 	}
 
 	for _, tc := range testcases {
