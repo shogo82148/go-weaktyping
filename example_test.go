@@ -8,7 +8,7 @@ import (
 	"github.com/shogo82148/go-weaktyping"
 )
 
-func ExampleIntUnmarshalJSON() {
+func ExampleInt_UnmarshalJSON() {
 	ptr := &struct {
 		Foo weaktyping.Int `json:"foo"`
 	}{}
