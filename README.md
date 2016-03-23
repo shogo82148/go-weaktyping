@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/shogo82148/go-weaktyping.svg?branch=master)](https://travis-ci.org/shogo82148/go-weaktyping)
+
 # go-weaktyping
 go-weaktyping is a go package for unmashaling weakly-typed-JSON.
 
