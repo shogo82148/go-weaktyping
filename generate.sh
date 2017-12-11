@@ -54,37 +54,67 @@ func TestMarshal${NEW_TYPE}_Generated(t *testing.T) {
 		in  interface{}
 		out string
 	}{
-		{struct {
-			Foo $NEW_TYPE \`json:"foo"\`
-		}{123}, \`{"foo":123}\`},
-		{struct {
-			Foo $NEW_TYPE \`json:"foo,omitempty"\`
-		}{123}, \`{"foo":123}\`},
-		{struct {
-			Foo $NEW_TYPE \`json:"foo"\`
-		}{0}, \`{"foo":0}\`},
-		{struct {
-			Foo $NEW_TYPE \`json:"foo,omitempty"\`
-		}{0}, \`{}\`},
+		{
+			struct {
+				Foo $NEW_TYPE \`json:"foo"\`
+			}{123},
+			\`{"foo":123}\`,
+		},
+		{
+			struct {
+				Foo $NEW_TYPE \`json:"foo,omitempty"\`
+			}{123},
+			\`{"foo":123}\`,
+		},
+		{
+			struct {
+				Foo $NEW_TYPE \`json:"foo"\`
+			}{0},
+			\`{"foo":0}\`,
+		},
+		{
+			struct {
+				Foo $NEW_TYPE \`json:"foo,omitempty"\`
+			}{0},
+			\`{}\`,
+		},
 
-		{struct {
-			Foo *$NEW_TYPE \`json:"foo"\`
-		}{Ptr$NEW_TYPE(123)}, \`{"foo":123}\`},
-		{struct {
-			Foo *$NEW_TYPE \`json:"foo,omitempty"\`
-		}{Ptr$NEW_TYPE(123)}, \`{"foo":123}\`},
-		{struct {
-			Foo *$NEW_TYPE \`json:"foo"\`
-		}{Ptr$NEW_TYPE(0)}, \`{"foo":0}\`},
-		{struct {
-			Foo *$NEW_TYPE \`json:"foo,omitempty"\`
-		}{Ptr$NEW_TYPE(0)}, \`{"foo":0}\`},
-		{struct {
-			Foo *$NEW_TYPE \`json:"foo"\`
-		}{nil}, \`{"foo":null}\`},
-		{struct {
-			Foo *$NEW_TYPE \`json:"foo,omitempty"\`
-		}{nil}, \`{}\`},
+		{
+			struct {
+				Foo *$NEW_TYPE \`json:"foo"\`
+			}{Ptr$NEW_TYPE(123)},
+			\`{"foo":123}\`,
+		},
+		{
+			struct {
+				Foo *$NEW_TYPE \`json:"foo,omitempty"\`
+			}{Ptr$NEW_TYPE(123)},
+			\`{"foo":123}\`,
+		},
+		{
+			struct {
+				Foo *$NEW_TYPE \`json:"foo"\`
+			}{Ptr$NEW_TYPE(0)},
+			\`{"foo":0}\`,
+		},
+		{
+			struct {
+				Foo *$NEW_TYPE \`json:"foo,omitempty"\`
+			}{Ptr$NEW_TYPE(0)},
+			\`{"foo":0}\`,
+		},
+		{
+			struct {
+				Foo *$NEW_TYPE \`json:"foo"\`
+			}{nil},
+			\`{"foo":null}\`,
+		},
+		{
+			struct {
+				Foo *$NEW_TYPE \`json:"foo,omitempty"\`
+			}{nil},
+			\`{}\`,
+		},
 	}
 
 	for _, tc := range testcases {

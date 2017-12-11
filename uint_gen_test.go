@@ -11,37 +11,67 @@ func TestMarshalUint_Generated(t *testing.T) {
 		in  interface{}
 		out string
 	}{
-		{struct {
-			Foo Uint `json:"foo"`
-		}{123}, `{"foo":123}`},
-		{struct {
-			Foo Uint `json:"foo,omitempty"`
-		}{123}, `{"foo":123}`},
-		{struct {
-			Foo Uint `json:"foo"`
-		}{0}, `{"foo":0}`},
-		{struct {
-			Foo Uint `json:"foo,omitempty"`
-		}{0}, `{}`},
+		{
+			struct {
+				Foo Uint `json:"foo"`
+			}{123},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo Uint `json:"foo,omitempty"`
+			}{123},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo Uint `json:"foo"`
+			}{0},
+			`{"foo":0}`,
+		},
+		{
+			struct {
+				Foo Uint `json:"foo,omitempty"`
+			}{0},
+			`{}`,
+		},
 
-		{struct {
-			Foo *Uint `json:"foo"`
-		}{PtrUint(123)}, `{"foo":123}`},
-		{struct {
-			Foo *Uint `json:"foo,omitempty"`
-		}{PtrUint(123)}, `{"foo":123}`},
-		{struct {
-			Foo *Uint `json:"foo"`
-		}{PtrUint(0)}, `{"foo":0}`},
-		{struct {
-			Foo *Uint `json:"foo,omitempty"`
-		}{PtrUint(0)}, `{"foo":0}`},
-		{struct {
-			Foo *Uint `json:"foo"`
-		}{nil}, `{"foo":null}`},
-		{struct {
-			Foo *Uint `json:"foo,omitempty"`
-		}{nil}, `{}`},
+		{
+			struct {
+				Foo *Uint `json:"foo"`
+			}{PtrUint(123)},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo *Uint `json:"foo,omitempty"`
+			}{PtrUint(123)},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo *Uint `json:"foo"`
+			}{PtrUint(0)},
+			`{"foo":0}`,
+		},
+		{
+			struct {
+				Foo *Uint `json:"foo,omitempty"`
+			}{PtrUint(0)},
+			`{"foo":0}`,
+		},
+		{
+			struct {
+				Foo *Uint `json:"foo"`
+			}{nil},
+			`{"foo":null}`,
+		},
+		{
+			struct {
+				Foo *Uint `json:"foo,omitempty"`
+			}{nil},
+			`{}`,
+		},
 	}
 
 	for _, tc := range testcases {

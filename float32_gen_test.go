@@ -11,37 +11,67 @@ func TestMarshalFloat32_Generated(t *testing.T) {
 		in  interface{}
 		out string
 	}{
-		{struct {
-			Foo Float32 `json:"foo"`
-		}{123}, `{"foo":123}`},
-		{struct {
-			Foo Float32 `json:"foo,omitempty"`
-		}{123}, `{"foo":123}`},
-		{struct {
-			Foo Float32 `json:"foo"`
-		}{0}, `{"foo":0}`},
-		{struct {
-			Foo Float32 `json:"foo,omitempty"`
-		}{0}, `{}`},
+		{
+			struct {
+				Foo Float32 `json:"foo"`
+			}{123},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo Float32 `json:"foo,omitempty"`
+			}{123},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo Float32 `json:"foo"`
+			}{0},
+			`{"foo":0}`,
+		},
+		{
+			struct {
+				Foo Float32 `json:"foo,omitempty"`
+			}{0},
+			`{}`,
+		},
 
-		{struct {
-			Foo *Float32 `json:"foo"`
-		}{PtrFloat32(123)}, `{"foo":123}`},
-		{struct {
-			Foo *Float32 `json:"foo,omitempty"`
-		}{PtrFloat32(123)}, `{"foo":123}`},
-		{struct {
-			Foo *Float32 `json:"foo"`
-		}{PtrFloat32(0)}, `{"foo":0}`},
-		{struct {
-			Foo *Float32 `json:"foo,omitempty"`
-		}{PtrFloat32(0)}, `{"foo":0}`},
-		{struct {
-			Foo *Float32 `json:"foo"`
-		}{nil}, `{"foo":null}`},
-		{struct {
-			Foo *Float32 `json:"foo,omitempty"`
-		}{nil}, `{}`},
+		{
+			struct {
+				Foo *Float32 `json:"foo"`
+			}{PtrFloat32(123)},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo *Float32 `json:"foo,omitempty"`
+			}{PtrFloat32(123)},
+			`{"foo":123}`,
+		},
+		{
+			struct {
+				Foo *Float32 `json:"foo"`
+			}{PtrFloat32(0)},
+			`{"foo":0}`,
+		},
+		{
+			struct {
+				Foo *Float32 `json:"foo,omitempty"`
+			}{PtrFloat32(0)},
+			`{"foo":0}`,
+		},
+		{
+			struct {
+				Foo *Float32 `json:"foo"`
+			}{nil},
+			`{"foo":null}`,
+		},
+		{
+			struct {
+				Foo *Float32 `json:"foo,omitempty"`
+			}{nil},
+			`{}`,
+		},
 	}
 
 	for _, tc := range testcases {
