@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUnmarshalUint(t *testing.T) {
+func TestMarshalUint_Generated(t *testing.T) {
 	testcases := []struct {
 		in  interface{}
 		out string
@@ -55,7 +55,7 @@ func TestUnmarshalUint(t *testing.T) {
 	}
 }
 
-func TestMarshalUint(t *testing.T) {
+func TestUnmarshalUint_Generated(t *testing.T) {
 	testcases := []struct {
 		in  string
 		ptr interface{}

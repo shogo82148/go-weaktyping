@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUnmarshalInt16(t *testing.T) {
+func TestMarshalInt16_Generated(t *testing.T) {
 	testcases := []struct {
 		in  interface{}
 		out string
@@ -55,7 +55,7 @@ func TestUnmarshalInt16(t *testing.T) {
 	}
 }
 
-func TestMarshalInt16(t *testing.T) {
+func TestUnmarshalInt16_Generated(t *testing.T) {
 	testcases := []struct {
 		in  string
 		ptr interface{}

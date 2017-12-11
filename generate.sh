@@ -49,7 +49,7 @@ import (
 	"testing"
 )
 
-func TestUnmarshal$NEW_TYPE(t *testing.T) {
+func TestMarshal${NEW_TYPE}_Generated(t *testing.T) {
 	testcases := []struct {
 		in  interface{}
 		out string
@@ -98,7 +98,7 @@ func TestUnmarshal$NEW_TYPE(t *testing.T) {
 	}
 }
 
-func TestMarshal$NEW_TYPE(t *testing.T) {
+func TestUnmarshal${NEW_TYPE}_Generated(t *testing.T) {
 	testcases := []struct {
 		in  string
 		ptr interface{}

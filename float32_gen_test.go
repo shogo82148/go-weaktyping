@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestUnmarshalFloat32(t *testing.T) {
+func TestMarshalFloat32_Generated(t *testing.T) {
 	testcases := []struct {
 		in  interface{}
 		out string
@@ -55,7 +55,7 @@ func TestUnmarshalFloat32(t *testing.T) {
 	}
 }
 
-func TestMarshalFloat32(t *testing.T) {
+func TestUnmarshalFloat32_Generated(t *testing.T) {
 	testcases := []struct {
 		in  string
 		ptr interface{}
