@@ -1,5 +1,5 @@
 /*
-go-weaktyping is a go package for unmashaling weakly-typed-JSON.
+Package weaktyping is a go package for unmashaling weakly-typed-JSON.
 
 Here is an example of weakly-typed-JSON.
   {
