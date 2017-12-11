@@ -27,11 +27,11 @@ func (v *$NEW_TYPE) UnmarshalText(data []byte) error {
 		*v = 0
 		return nil
 	}
-	if w, err := $PARSE; err != nil {
+	w, err := $PARSE
+	if err != nil {
 		return err
-	} else {
-		*v = $NEW_TYPE(w)
 	}
+	*v = $NEW_TYPE(w)
 	return nil
 }
 EOF

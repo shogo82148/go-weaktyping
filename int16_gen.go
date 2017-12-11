@@ -18,10 +18,10 @@ func (v *Int16) UnmarshalText(data []byte) error {
 		*v = 0
 		return nil
 	}
-	if w, err := strconv.ParseInt(s, 10, 16); err != nil {
+	w, err := strconv.ParseInt(s, 10, 16)
+	if err != nil {
 		return err
-	} else {
-		*v = Int16(w)
 	}
+	*v = Int16(w)
 	return nil
 }

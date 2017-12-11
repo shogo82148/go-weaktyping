@@ -18,10 +18,10 @@ func (v *Float32) UnmarshalText(data []byte) error {
 		*v = 0
 		return nil
 	}
-	if w, err := strconv.ParseFloat(s, 32); err != nil {
+	w, err := strconv.ParseFloat(s, 32)
+	if err != nil {
 		return err
-	} else {
-		*v = Float32(w)
 	}
+	*v = Float32(w)
 	return nil
 }
