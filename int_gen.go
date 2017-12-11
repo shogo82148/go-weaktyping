@@ -13,7 +13,7 @@ func (v *Int) UnmarshalJSON(data []byte) error {
 	return v.UnmarshalText(unquoteBytesIfQuoted(data))
 }
 
-// UnmarshalJSON implements "encoding".TextUnmarshaler.
+// UnmarshalText implements "encoding".TextUnmarshaler.
 func (v *Int) UnmarshalText(data []byte) error {
 	s := string(data)
 	if s == "null" {
