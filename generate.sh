@@ -9,18 +9,20 @@ PARSE="$3"
 cat <<EOF > "${ORG_TYPE}_gen.go"
 package weaktyping
 
-import "strconv"
-
+// $NEW_TYPE is weak typed $ORG_TYPE.
 type $NEW_TYPE $ORG_TYPE
 
+// Ptr$NEW_TYPE returns the pointer of v.
 func Ptr$NEW_TYPE(v $NEW_TYPE) *$NEW_TYPE {
 	return &v
 }
 
+// UnmarshalJSON implements "encoding/json".Unmarshaler.
 func (v *$NEW_TYPE) UnmarshalJSON(data []byte) error {
 	return v.UnmarshalText(unquoteBytesIfQuoted(data))
 }
 
+// UnmarshalJSON implements "encoding".TextUnmarshaler.
 func (v *$NEW_TYPE) UnmarshalText(data []byte) error {
 	s := string(data)
 	if s == "null" {

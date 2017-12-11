@@ -1,24 +1,26 @@
 package weaktyping
 
-import "strconv"
-
+// Float32 is weak typed float32.
 type Float32 float32
 
+// PtrFloat32 returns the pointer of v.
 func PtrFloat32(v Float32) *Float32 {
 	return &v
 }
 
+// UnmarshalJSON implements "encoding/json".Unmarshaler.
 func (v *Float32) UnmarshalJSON(data []byte) error {
 	return v.UnmarshalText(unquoteBytesIfQuoted(data))
 }
 
+// UnmarshalJSON implements "encoding".TextUnmarshaler.
 func (v *Float32) UnmarshalText(data []byte) error {
 	s := string(data)
 	if s == "null" {
 		*v = 0
 		return nil
 	}
-	w, err := strconv.ParseFloat(s, 32)
+	w, err := parseFloat(s, 32)
 	if err != nil {
 		return err
 	}
