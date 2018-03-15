@@ -97,6 +97,8 @@ func TestUnmarshalUint_Generated(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Uint), &map[string]*Uint{"foo": PtrUint(123)}},
 		{`{"foo":null}`, new(map[string]Uint), &map[string]Uint{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Uint), &map[string]*Uint{"foo": nil}},
+		{`{"foo":""}`, new(map[string]Uint), &map[string]Uint{"foo": 0}},
+		{`{"foo":""}`, new(map[string]*Uint), &map[string]*Uint{"foo": PtrUint(0)}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]Uint), &map[string][]Uint{"foo": {123, 45, 0}}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]*Uint), &map[string][]*Uint{"foo": {PtrUint(123), PtrUint(45), nil}}},
 	}

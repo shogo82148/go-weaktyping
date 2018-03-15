@@ -97,6 +97,8 @@ func TestUnmarshalInt_Generated(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Int), &map[string]*Int{"foo": PtrInt(123)}},
 		{`{"foo":null}`, new(map[string]Int), &map[string]Int{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Int), &map[string]*Int{"foo": nil}},
+		{`{"foo":""}`, new(map[string]Int), &map[string]Int{"foo": 0}},
+		{`{"foo":""}`, new(map[string]*Int), &map[string]*Int{"foo": PtrInt(0)}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]Int), &map[string][]Int{"foo": {123, 45, 0}}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]*Int), &map[string][]*Int{"foo": {PtrInt(123), PtrInt(45), nil}}},
 	}

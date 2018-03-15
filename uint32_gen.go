@@ -16,7 +16,7 @@ func (v *Uint32) UnmarshalJSON(data []byte) error {
 // UnmarshalText implements "encoding".TextUnmarshaler.
 func (v *Uint32) UnmarshalText(data []byte) error {
 	s := string(data)
-	if s == "null" {
+	if s == "" || s == "null" {
 		*v = 0
 		return nil
 	}

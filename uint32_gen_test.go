@@ -97,6 +97,8 @@ func TestUnmarshalUint32_Generated(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Uint32), &map[string]*Uint32{"foo": PtrUint32(123)}},
 		{`{"foo":null}`, new(map[string]Uint32), &map[string]Uint32{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Uint32), &map[string]*Uint32{"foo": nil}},
+		{`{"foo":""}`, new(map[string]Uint32), &map[string]Uint32{"foo": 0}},
+		{`{"foo":""}`, new(map[string]*Uint32), &map[string]*Uint32{"foo": PtrUint32(0)}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]Uint32), &map[string][]Uint32{"foo": {123, 45, 0}}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]*Uint32), &map[string][]*Uint32{"foo": {PtrUint32(123), PtrUint32(45), nil}}},
 	}

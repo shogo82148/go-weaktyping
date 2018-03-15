@@ -97,6 +97,8 @@ func TestUnmarshalUint8_Generated(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Uint8), &map[string]*Uint8{"foo": PtrUint8(123)}},
 		{`{"foo":null}`, new(map[string]Uint8), &map[string]Uint8{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Uint8), &map[string]*Uint8{"foo": nil}},
+		{`{"foo":""}`, new(map[string]Uint8), &map[string]Uint8{"foo": 0}},
+		{`{"foo":""}`, new(map[string]*Uint8), &map[string]*Uint8{"foo": PtrUint8(0)}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]Uint8), &map[string][]Uint8{"foo": {123, 45, 0}}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]*Uint8), &map[string][]*Uint8{"foo": {PtrUint8(123), PtrUint8(45), nil}}},
 	}

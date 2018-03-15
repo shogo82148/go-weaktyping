@@ -97,6 +97,8 @@ func TestUnmarshalFloat64_Generated(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Float64), &map[string]*Float64{"foo": PtrFloat64(123)}},
 		{`{"foo":null}`, new(map[string]Float64), &map[string]Float64{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Float64), &map[string]*Float64{"foo": nil}},
+		{`{"foo":""}`, new(map[string]Float64), &map[string]Float64{"foo": 0}},
+		{`{"foo":""}`, new(map[string]*Float64), &map[string]*Float64{"foo": PtrFloat64(0)}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]Float64), &map[string][]Float64{"foo": {123, 45, 0}}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]*Float64), &map[string][]*Float64{"foo": {PtrFloat64(123), PtrFloat64(45), nil}}},
 	}
