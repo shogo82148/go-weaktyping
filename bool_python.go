@@ -2,12 +2,16 @@ package weaktyping
 
 import "strconv"
 
+// PythonBool is weak typed bool.
+// false, 0, "", [], {}, and null are treated as false, others are true.
 type PythonBool bool
 
+// PtrPythonBool returns the pointer of v.
 func PtrPythonBool(v PythonBool) *PythonBool {
 	return &v
 }
 
+// UnmarshalJSON implements "encoding/json".Unmarshaler.
 func (v *PythonBool) UnmarshalJSON(data []byte) error {
 	s := string(data)
 	switch s {
@@ -20,6 +24,7 @@ func (v *PythonBool) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// UnmarshalText implements "encoding".TextUnmarshaler.
 func (v *PythonBool) UnmarshalText(data []byte) error {
 	*v = PythonBool(len(data) != 0)
 	return nil

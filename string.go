@@ -7,12 +7,15 @@ import (
 	"unicode/utf8"
 )
 
+// String is weak typed bool.
 type String string
 
+// PtrString returns the pointer of v.
 func PtrString(v String) *String {
 	return &v
 }
 
+// UnmarshalJSON implements "encoding/json".Unmarshaler.
 func (v *String) UnmarshalJSON(data []byte) error {
 	if s, ok := unquote(data); ok {
 		*v = String(s)
@@ -22,6 +25,7 @@ func (v *String) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// UnmarshalText implements "encoding".TextUnmarshaler.
 func (v *String) UnmarshalText(data []byte) error {
 	*v = String(data)
 	return nil
