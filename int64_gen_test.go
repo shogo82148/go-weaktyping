@@ -97,6 +97,8 @@ func TestUnmarshalInt64_Generated(t *testing.T) {
 		{`{"foo":"123"}`, new(map[string]*Int64), &map[string]*Int64{"foo": PtrInt64(123)}},
 		{`{"foo":null}`, new(map[string]Int64), &map[string]Int64{"foo": 0}},
 		{`{"foo":null}`, new(map[string]*Int64), &map[string]*Int64{"foo": nil}},
+		{`{"foo":""}`, new(map[string]Int64), &map[string]Int64{"foo": 0}},
+		{`{"foo":""}`, new(map[string]*Int64), &map[string]*Int64{"foo": PtrInt64(0)}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]Int64), &map[string][]Int64{"foo": {123, 45, 0}}},
 		{`{"foo":[123,"45",null]}`, new(map[string][]*Int64), &map[string][]*Int64{"foo": {PtrInt64(123), PtrInt64(45), nil}}},
 	}

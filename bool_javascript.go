@@ -2,12 +2,16 @@ package weaktyping
 
 import "strconv"
 
+// JavaScriptBool is weak typed bool.
+// false, 0, "", and null are treated as false, others are true.
 type JavaScriptBool bool
 
+// PtrJavaScriptBool returns the pointer of v.
 func PtrJavaScriptBool(v JavaScriptBool) *JavaScriptBool {
 	return &v
 }
 
+// UnmarshalJSON implements "encoding/json".Unmarshaler.
 func (v *JavaScriptBool) UnmarshalJSON(data []byte) error {
 	s := string(data)
 	switch s {
@@ -20,6 +24,7 @@ func (v *JavaScriptBool) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// UnmarshalText implements "encoding".TextUnmarshaler.
 func (v *JavaScriptBool) UnmarshalText(data []byte) error {
 	*v = JavaScriptBool(len(data) != 0)
 	return nil

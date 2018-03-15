@@ -25,7 +25,7 @@ func (v *$NEW_TYPE) UnmarshalJSON(data []byte) error {
 // UnmarshalText implements "encoding".TextUnmarshaler.
 func (v *$NEW_TYPE) UnmarshalText(data []byte) error {
 	s := string(data)
-	if s == "null" {
+	if s == "" || s == "null" {
 		*v = 0
 		return nil
 	}
@@ -140,6 +140,8 @@ func TestUnmarshal${NEW_TYPE}_Generated(t *testing.T) {
 		{\`{"foo":"123"}\`, new(map[string]*$NEW_TYPE), &map[string]*$NEW_TYPE{"foo": Ptr$NEW_TYPE(123)}},
 		{\`{"foo":null}\`, new(map[string]$NEW_TYPE), &map[string]$NEW_TYPE{"foo": 0}},
 		{\`{"foo":null}\`, new(map[string]*$NEW_TYPE), &map[string]*$NEW_TYPE{"foo": nil}},
+		{\`{"foo":""}\`, new(map[string]$NEW_TYPE), &map[string]$NEW_TYPE{"foo": 0}},
+		{\`{"foo":""}\`, new(map[string]*$NEW_TYPE), &map[string]*$NEW_TYPE{"foo": Ptr$NEW_TYPE(0)}},
 		{\`{"foo":[123,"45",null]}\`, new(map[string][]$NEW_TYPE), &map[string][]$NEW_TYPE{"foo": {123, 45, 0}}},
 		{\`{"foo":[123,"45",null]}\`, new(map[string][]*$NEW_TYPE), &map[string][]*$NEW_TYPE{"foo": {Ptr$NEW_TYPE(123), Ptr$NEW_TYPE(45), nil}}},
 	}
