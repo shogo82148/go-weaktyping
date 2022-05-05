@@ -5,10 +5,10 @@
 
 version: 2
 updates:
-  - package-ecosystem: "daily"
+  - package-ecosystem: "gomod"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "daily"
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
