@@ -60,4 +60,4 @@ func ExampleInt_UnmarshalJSON() {
 
 ## LICENSE
 
-This software is released under the MIT License, see LICENSE.md.
+This software is released under the MIT License, see LICENSE.
