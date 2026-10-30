@@ -7,21 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.4.0
       - name: golangci-lint
-        uses: reviewdog/action-golangci-lint@v2
+        uses: reviewdog/action-golangci-lint@v2.10.2
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           level: warning
       - name: misspell
-        uses: reviewdog/action-misspell@v1
+        uses: reviewdog/action-misspell@v1.30.4
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           locale: "US"
       - name: shellcheck
-        uses: reviewdog/action-shellcheck@v1
+        uses: reviewdog/action-shellcheck@v1.34.1
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
